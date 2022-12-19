@@ -6,13 +6,6 @@ pluginManagement {
     }
 }
 
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-rootProject.name = "Kotlin_Multiplatform_Test_App"
+rootProject.name = "Find_Time"
 include(":androidApp")
 include(":shared")

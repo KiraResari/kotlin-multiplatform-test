@@ -81,3 +81,120 @@
   * Yes, and now it works! Awesome!
 
 * This is as far as I'm getting with this today, and a good place to stop for the day too
+
+
+
+# 19-Dec-2022
+
+* Now continuing with this
+* My next goal is to get this simple hello world app running on Desktop as well
+
+  * I am getting "Compose" as a key word from a number of places that I searched here
+  * This is supposedly a sample project that features desktop support
+  
+    * https://github.com/Kotlin/kmm-production-sample/
+  * In addition, this looks like a good place to start reading up on this:
+
+    * https://simply-how.com/getting-started-with-compose-for-desktop
+  * I now realize that Kotlin Compose is a Framework different from Kotlin Multiplatform, and while I'm not sure if they can be used in conjunction, I don't think so
+  * I'll create a different project for evaluating this: `kotlin-compose-test`
+  
+* Okay, doing so, I think I've now got a basic understanding of how it works, and an idea of how to integrate it with Kotlin Multiplatform
+
+  * Basically, I think that Kotlin Compose is best understood as a frontend, so if I understand it correctly, I should be able to use it as a subproject in Kotlin Multiplatform, using the same `shared` Project as the `androidApp`
+
+  * Let's see if I can pull that off in practice
+
+  * First off, I found a `Compose Multiplatform IDE Support` for Android Studio, which sounds like a good start, so I installed that
+
+    * It still won't let me just add a Compose module...
+
+  * Here's something that I'd say deals with this:
+
+    * https://stackoverflow.com/questions/71041735/kotlin-multiplatform-compose-desktop-web-mobile
+
+  * That links me back here:
+
+    * https://github.com/JetBrains/compose-jb
+
+  * And that again makes it seem like it's not possible to combine Compose with KMM
+
+  * After a bit of back and forth, I have now landed here:
+
+    * https://www.kodeco.com/books/kotlin-multiplatform-by-tutorials/v1.0/chapters/1-introduction
+
+    * This one features this _very_ helpful paragraph, which helps clarify quite a few things:
+
+      * > You use KMP to write code using Kotlin for multiple platforms. Kotlin Multiplatform Mobile (KMM) is a way to  use Kotlin specifically for cross-platform mobile development. When  you’re talking about developing just for mobile devices, you’re talking  about KMM — but if you’re talking about all platforms, including desktop or the web, you’re talking about KMP.
+
+    * This is probably also good to **keep in mind**:
+
+      * > While KMP provides Kotlin as the  programming language, it doesn’t provide a UI. If you want to create a  UI for Android, you can write it in native code or use the newer Jetpack Compose UI framework. For iOS, you can use  UIKit or the newer SwiftUI  framework using Swift. For the desktop, you can use Desktop Compose or  Java Swing. In other words, you have a choice for how you write your UI. Many see this as an advantage — the UI will always be native, so it  won’t suffer from the slow bridge communication that web-based  frameworks have.
+
+  * Some steps into the tutorial, I am now coming across this error:
+
+    * ````
+      Caused by: org.gradle.api.internal.tasks.properties.PropertyEvaluationException: Error while evaluating property 'namespace' of task ':shared:packageDebugResources'
+      ````
+
+    * I think this might be because the tutorial instructed me to do some funky stuff with the gradle build files
+
+    * I think that happens in the unit test project, which I don't really need right now, so I'll remove it
+
+    * I now removed it, but the error still remains the same when I try to run it
+
+      * Mmh, maybe it's because I have a `-` in the namespace? I seem to recall that Android for some reason did not like that
+
+      * Nope, even with a `_` instead it still fails
+
+      * The full error is:
+
+        * ````
+          org.gradle.api.internal.tasks.properties.PropertyEvaluationException: Error while evaluating property 'namespace' of task ':shared:packageDebugResources'
+          org.gradle.api.internal.provider.AbstractProperty$PropertyQueryException: Failed to calculate the value of task ':shared:packageDebugResources' property 'namespace'.
+          org.gradle.api.internal.provider.AbstractProperty$PropertyQueryException: Failed to query the value of property 'namespace'.
+          com.android.builder.errors.EvalIssueException: Manifest file does not exist: E:\projects\kotlin-multiplatform-test\shared\src\androidMain\AndroidManifest.xml
+          org.gradle.api.internal.tasks.properties.PropertyEvaluationException: Error while evaluating property 'namespace' of task ':shared:processDebugManifest'
+          org.gradle.api.internal.provider.AbstractProperty$PropertyQueryException: Failed to calculate the value of task ':shared:processDebugManifest' property 'namespace'.
+          org.gradle.api.internal.provider.AbstractProperty$PropertyQueryException: Failed to query the value of property 'namespace'.
+          com.android.builder.errors.EvalIssueException: Manifest file does not exist: E:\projects\kotlin-multiplatform-test\shared\src\androidMain\AndroidManifest.xml
+          org.gradle.api.internal.tasks.properties.PropertyEvaluationException: Error while evaluating property 'namespace' of task ':shared:generateDebugBuildConfig'
+          org.gradle.api.internal.provider.AbstractProperty$PropertyQueryException: Failed to calculate the value of task ':shared:generateDebugBuildConfig' property 'namespace'.
+          org.gradle.api.internal.provider.AbstractProperty$PropertyQueryException: Failed to query the value of property 'namespace'.
+          com.android.builder.errors.EvalIssueException: Manifest file does not exist: E:\projects\kotlin-multiplatform-test\shared\src\androidMain\AndroidManifest.xml
+          ````
+
+        * This part looks like somethin worth investigating:
+
+          * ````
+            Manifest file does not exist: E:\projects\kotlin-multiplatform-test\shared\src\androidMain\AndroidManifest.xml
+            ````
+
+          * Damn right it doesn't, but why not, and why should it?
+
+          * What's that file anyway?
+
+          * Didn't the tutorial mention something like that earlier?
+
+          * Not really, but maybe I can copycat what I need from the source code for this tutorial
+
+            * https://github.com/kodecocodes/kmpf-materials
+
+          * Nope, still not working
+
+          * Screw it all! Let me just download the code for part 3 and take it from there =>,<=
+
+            * Not happy about that at all though =>,<=
+
+
+
+
+# Pros & Cons
+
+## Cons
+
+* I'm having considerable trouble even just with the Tutorials, which makes me not at all optimisitic about building an actual production app with this
+
+
+
+# ⚓
