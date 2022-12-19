@@ -209,8 +209,31 @@
 
     * I now did something else for 15 minutes while waiting for the emulator to start, but nothing happened, I'm still only getting a black screen
     * And now I'm back at the state where the build finishes in 1 second, and nothing happens
-
-
+  
+  * I also tried switching back to the version that I had yesterday and worked, but it didn't
+  
+    * That seems to indicate that the problem is not about anything project-related, but rather the emulator
+    * Okay, so I tried Duplicating the Android Virtual Device and deleting the old one, but it won't let me do that saying that the device is still running, even though I had stopped it
+      * I now quit and then re-started Android Studio, and then it let me delete it 
+    * After that, I did run it using the new virtual device, and there it did work
+  
+  * Right, now back to what I was actually trying to do, namely following the tutorial 
+  
+    * I now got to `Build and run the app on a device or emulator. Here’s what you’ll see:`, but despite having followed all the steps to get there, it doesn't work
+  
+    * Instead, it doesn't find classes that are clearly there:
+  
+      * ````
+        Unresolved reference: MainView
+        ````
+  
+    * I think the example has the imports wrong or something, because `import com.raywenderlich.findtime.android.theme.AppTheme` doesn't work, but just `import AppTheme` works
+  
+    * Aannd, there's also typos in the tutorial
+  
+    * Anyway, I now got it to work, and what I see looks reasonably good
+  
+    * 
 
 
 # Pros & Cons
