@@ -91,14 +91,14 @@
 
   * I am getting "Compose" as a key word from a number of places that I searched here
   * This is supposedly a sample project that features desktop support
-  
+
     * https://github.com/Kotlin/kmm-production-sample/
   * In addition, this looks like a good place to start reading up on this:
 
     * https://simply-how.com/getting-started-with-compose-for-desktop
   * I now realize that Kotlin Compose is a Framework different from Kotlin Multiplatform, and while I'm not sure if they can be used in conjunction, I don't think so
   * I'll create a different project for evaluating this: `kotlin-compose-test`
-  
+
 * Okay, doing so, I think I've now got a basic understanding of how it works, and an idea of how to integrate it with Kotlin Multiplatform
 
   * Basically, I think that Kotlin Compose is best understood as a frontend, so if I understand it correctly, I should be able to use it as a subproject in Kotlin Multiplatform, using the same `shared` Project as the `androidApp`
@@ -186,6 +186,30 @@
 
             * Not happy about that at all though =>,<=
 
+* Now I'll want to remove the iOS files all over again
+
+  * Also, waiting another ten minutes or so for the project to sync up =>,<=
+  * I tried removing the iOS modules, which caused Android Studio to crash with an error
+  * Now I re-opened it, but it looks weird, different than before
+    * Different bad, probably, because now I can't see the build files anymore
+    * The really strange thing is that when I check in git, nothing was changed in the file system
+      * Hm, it's probably some of the ignored files that were changed then
+
+  * Will deleting the `.idea` Folder give me a fresh start?
+  * Ah, okay, no, I just needed to switch the view of the outliner from "Android" to "Project" 
+  * Okay, so Now I'm trying to continue with this step of the tutorial, after several hours of floundering around with useless comfiguration issues
+    * https://www.kodeco.com/books/kotlin-multiplatform-by-tutorials/v1.0/chapters/3-developing-ui-android-jetpack-compose
+
+  * Now I have trouble running this on the Android emulator 
+    * If I click the "run" button on the AndroidApp, it just builds for a second now, but does not launch on the emulator
+    * Before, It was at least saying "waiting for target device to come online", but then it stopped doing that too
+    * Meanwhile, the emulator is just a picture of an Android Smahon with a black screen
+    * I now closed the emulator and tried it again, and now it says "Waiting for all target devices to come online" again
+      * I wish I had some sort of indication about what's happening in the background here
+
+    * I now did something else for 15 minutes while waiting for the emulator to start, but nothing happened, I'm still only getting a black screen
+    * And now I'm back at the state where the build finishes in 1 second, and nothing happens
+
 
 
 
@@ -193,6 +217,7 @@
 
 ## Cons
 
+* 10-minute waits on project sync-ups
 * I'm having considerable trouble even just with the Tutorials, which makes me not at all optimisitic about building an actual production app with this
 
 
