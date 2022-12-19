@@ -1,12 +1,13 @@
 package com.raywenderlich.findtime.android
 
-import MainView
+import com.raywenderlich.findtime.android.ui.MainView
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.ui.res.stringResource
+import com.raywenderlich.findtime.android.ui.MainView
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 

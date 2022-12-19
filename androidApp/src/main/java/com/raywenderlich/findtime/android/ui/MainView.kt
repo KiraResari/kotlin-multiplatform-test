@@ -1,3 +1,5 @@
+package com.raywenderlich.findtime.android.ui
+
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -11,8 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import AppTheme
+import EmptyComposable
+import FindMeetingScreen
+import TimeZoneScreen
 import androidx.compose.material.*
 import androidx.compose.ui.graphics.Color
+import topBarFun
 
 sealed class Screen(val title: String) {
     object TimeZonesScreen : Screen("Timezones")
@@ -87,8 +93,25 @@ fun MainView(actionBarFun: topBarFun = { EmptyComposable() }) {
                     }
                 }            }
         ) {
-            // TODO: Replace with Dialog
-            // TODO: Replace with screens
+            if (showAddDialog.value) {
+                AddTimeZoneDialog(
+                    onAdd = { newTimezones ->
+                        showAddDialog.value = false
+                        for (zone in newTimezones) {
+                            if (!currentTimezoneStrings.contains(zone)) {
+                                currentTimezoneStrings.add(zone)
+                            }
+                        }
+                    },
+                    onDismiss = {
+                        showAddDialog.value = false
+                    },
+                )
+            }
+            when (selectedIndex.value) {
+                0 -> TimeZoneScreen(currentTimezoneStrings)
+                1 -> FindMeetingScreen(currentTimezoneStrings)
+            }
         }
 
     }

@@ -233,7 +233,18 @@
   
     * Anyway, I now got it to work, and what I see looks reasonably good
   
-    * 
+  * And now I managed to make it to the end of this part of the tutorial without insurmountable problems
+  
+* I think this is as far as I'm getting with this today
+
+* It's a bit frustrating. At the start of the day I was under the impression of having the Android App figured out and the goal of figuring out the desktop app for that today, and now, by the end of the day, all I managed to get done is copy-paste another android app from a tutorial, with no progress on the desktop app whatsoever
+
+  * Oh well, at least this more complex android app features a bunch of interesting functions and techniques, and since chapter 5 of this tutorial is specifically about building a desktop app, I hope that I will get around to that tomorrow
+
+
+Next:
+
+* https://www.kodeco.com/books/kotlin-multiplatform-by-tutorials/v1.0/chapters/5-developing-ui-compose-multiplatform
 
 
 # Pros & Cons
