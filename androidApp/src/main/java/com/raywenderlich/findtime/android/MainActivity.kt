@@ -1,6 +1,5 @@
 package com.raywenderlich.findtime.android
 
-import com.raywenderlich.compose.ui.MainView
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -16,9 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Napier.base(DebugAntilog())
         setContent {
-            com.raywenderlich.compose.ui.MainView {
+            MainView {
                 TopAppBar(title = {
-                    // 4
                     when (it) {
                         0 -> Text(text = stringResource(R.string.world_clocks))
                         else -> Text(text = stringResource(R.string.findmeeting))

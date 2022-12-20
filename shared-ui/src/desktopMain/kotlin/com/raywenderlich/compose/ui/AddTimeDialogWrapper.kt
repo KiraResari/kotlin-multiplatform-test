@@ -16,6 +16,7 @@ actual fun AddTimeDialogWrapper(onDismiss: onDismissType, content: @Composable (
     Dialog(onCloseRequest = { onDismiss() },
         state = rememberDialogState(
             position = WindowPosition(Alignment.Center),
+            size = DpSize(width = 400.dp, height = Dp.Unspecified),
         ),
         title = "Add Timezones",
         content = {

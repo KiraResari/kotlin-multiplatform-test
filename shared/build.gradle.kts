@@ -2,7 +2,6 @@
 plugins {
     kotlin(multiplatform)
     id(androidLib)
-    kotlin(cocopods)
 }
 
 version = "1.0"

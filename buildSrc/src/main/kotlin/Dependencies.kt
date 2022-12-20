@@ -3,7 +3,6 @@ const val androidApp = "com.android.application"
 const val androidLib = "com.android.library"
 const val multiplatform = "multiplatform"
 const val composePlugin = "org.jetbrains.compose"
-const val cocopods = "native.cocoapods"
 
 object Versions {
     const val min_sdk = 24
@@ -13,7 +12,7 @@ object Versions {
     // Plugins
     const val kotlin = "1.6.10"
     const val kotlin_gradle_plugin = "1.6.10"
-    const val android_gradle_plugin = "7.3.1"
+    const val android_gradle_plugin = "7.0.4"
     const val desktop_compose_plugin = "1.0.1"
     const val compose_compiler_version= "1.1.0-rc02"
     const val compose_version= "1.1.0-rc01"

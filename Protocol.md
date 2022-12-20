@@ -502,19 +502,145 @@
 
   * Now the app generally works, even if some of the window sizes are still wrong
 
+  * But I think the tutorial still gets around to that
+
+  * I tried starting the app again just before the start of the "Menus" section, and it got me this error:
+
+    * ````
+      e: E:\projects\kotlin-multiplatform-test\desktop\src\jvmMain\kotlin\Main.kt: (26, 17): Cannot find a parameter with this name: onCloseRequest
+      ````
+
+    * That happens here:
+
+      * ````kotlin
+                windowList.forEachIndexed { i, window ->
+                    Window(
+                        onCloseRequest = {
+                            windowList.removeAt(i)
+                        },
+                        state = windowList[i].windowState,
+                        title = windowList[i].windowName
+                    )
+                }
+        ````
+
+    * I cross-checked that location against the one from the final project version, but it looks just the same, and yet it doesn't work for me
+
+    * It fails to recognize `onClodeRequest`, `state` and `title`
+
+    * Comparing it, in the final version `Window` is defined as:
+
+      * ````
+        @Composable
+        public fun Window(
+            onCloseRequest: () -> Unit,
+            state: WindowState,
+            visible: Boolean,
+            title: String,
+            icon: Painter?,
+            undecorated: Boolean,
+            transparent: Boolean,
+            resizable: Boolean,
+            enabled: Boolean,
+            focusable: Boolean,
+            alwaysOnTop: Boolean,
+            onPreviewKeyEvent: (KeyEvent) -> Boolean,
+            onKeyEvent: (KeyEvent) -> Boolean,
+            content: @Composable() (FrameWindowScope.() -> Unit)
+        ): Unit
+          Gradle: org.jetbrains.compose.ui:ui-desktop:1.0.1 (ui-desktop-1.0.1.jar)
+        ````
+
+    * ...while in my project, it is defined as:
+
+      * ````
+        @Composable
+        public fun Window(
+            visible: Boolean,
+            onPreviewKeyEvent: (KeyEvent) -> Boolean,
+            onKeyEvent: (KeyEvent) -> Boolean,
+            create: () -> ComposeWindow,
+            dispose: (ComposeWindow) -> Unit,
+            update: (ComposeWindow) -> Unit,
+            content: @Composable() (FrameWindowScope.() -> Unit)
+        ): Unit
+          Gradle: org.jetbrains.compose.ui:ui-desktop:1.0.1 (ui-desktop-1.0.1.jar)
+        ````
+
+    * Weird how it is different, even though the Unit appears to be the same (`ui-desktop-1.0.1.jar`) 
+
+    * However, I do also note that in the final version of the project, I do have a little corner notification saying "**Project update recommended**: Android Gradle Project can be upgraded"
+
+      * So maybe I did that once on my project, and that is the issue
+      * I wonder where that would be defined...
+        * Looks like it's in the `Dependencies.kt`
+      * Looks like I did use a newer version in my project
+      * I now downgraded it back from `"7.3.1"` to `"7.0.4"`
+        * Sadly, that did not change the error
+      * I now tried copying over the entirety of the Dependencies
+        * But it still has the same problem
+      * I tried copying over the entire `build.gradle.kts` from the final version
+        * But that did not work either
+      * Wait, let me see if it just magically goes away if I proceed with the tutorial, because I note that there's also a red _ beneath the closing ")"
+
+    * But if that's the case, then the tutorial is really confusing at this point, because if I see a line reading "If you look at the menu bar", then of course I am going to start the app
+
+  * And even that doesn't really work, because the next instruction the tutorial has for me is "Before the **Surface** function, add the code for a `MenuBar` as follows:"
+
+    * ...but there *is* no "Surface" function anywhere in the class **Main.kt** in the desktop module
+    * Or rather, there was, but the previous instruction "Replace the `Window` function with:..." caused me to delete it, because the code I replaced it with didn't have a body
+    * ...did he intend me to only replace the header and keep the body? That would probably also explain the problems that I futilely tried to solve this last hour
+    * Yes, if I put the Body back in again, everything works once more
+    * Seriously, though... =>,<=
+
+  * The next problem happens at the line "To create a **dmg** installer for the Mac, you need to run the **package** Gradle task. You can run it from Android Studio:"
+
+    * There, I get this problem:
+
+      * ````
+        Packaging native distributions requires JDK runtime version >= 15
+        Actual version: '11'
+        Java home: C:\Programs\Android Studio\jre
+        ````
+
+      * True enough, the Java Version in that directory is only 11.0.13
+
+    * Seriously! =>,<=
+
+    * I now tried setting the Java Version to the latest in Android Studio, which happens to be 19.0.1
+
+    * Now the build works
+
+  * Anyway, I now managed to build and install it, and I note an issue right away
+
+    * It appears to be 129 MB big, which is roughly 128 MB too big for a program that does basically nothing
+
+  * However, it _does_ run as a standalone app after being installed, which I figure is at least something 
+
+* Anyway, that's it for the Desktop app tutorial step, and the Android App is also still working, which is kinda nice, and also a bit unexpected
+
+  * At this point, I expected more horrible complications
+
+* But it took me all day again, which is not very encouraging
+
+* Thus far, my experience with learning Kotlin Multiplatform can very accurately be summarized in this 6-second video clip: https://youtube.com/clip/UgkxkWekhkk-X6dYQYrNdm72Echw9UxYPZ8m 
+
 
 
 # Pros & Cons
 
 ## Cons
 
-* 10-minute waits on project sync-ups
+* Long build times
+  * 10-minute waits on project sync-ups
   * 2-minute wait on daily start-up
+  * Regular wait times during project builds and gradle refreshes
 
 * I'm having considerable trouble even just with the Tutorials, which makes me not at all optimisitic about building an actual production app with this
 * Setting up a project seems overly complicated
   * Regularly getting project configuration issues, such as modules not being recognized as such, and it apparently is impossible to tell the IDE that a folder is a module
 
+* Large file sizes (129 MB for a program that barely does anything)
 
 
 

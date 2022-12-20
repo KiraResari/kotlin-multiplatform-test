@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":shared"))
+    implementation(project(":shared-ui"))
     with(Deps) {
         implementation(napier)
         implementation(material)

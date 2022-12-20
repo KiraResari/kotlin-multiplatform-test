@@ -12,7 +12,7 @@ actual fun MeetingDialogWrapper(onDismiss: onDismissType, content: @Composable (
     Dialog(
         onCloseRequest = { onDismiss() },
         title = "Meetings",
-        state = rememberDialogState(),
+        state = rememberDialogState(size = DpSize(width = 400.dp, height = Dp.Unspecified)),
         content = {
             content()
         })
