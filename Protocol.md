@@ -242,9 +242,225 @@
   * Oh well, at least this more complex android app features a bunch of interesting functions and techniques, and since chapter 5 of this tutorial is specifically about building a desktop app, I hope that I will get around to that tomorrow
 
 
-Next:
 
-* https://www.kodeco.com/books/kotlin-multiplatform-by-tutorials/v1.0/chapters/5-developing-ui-compose-multiplatform
+
+# 20-Dec-2022
+
+* Now continuing with this
+
+* Last turn, I managed to follow another tutorial through for creating a more complex Android app
+
+* Today, I'm following that same tutorial for creating a desktop version of that same app, which relies on the same resources
+
+  * Here's the link for that:
+
+    * https://www.kodeco.com/books/kotlin-multiplatform-by-tutorials/v1.0/chapters/5-developing-ui-compose-multiplatform
+
+  * I note that while starting up the IDE with the project takes about 2 minutes, which is 8 minutes less than the initial load time, but still roughly 90 seconds more than what I feel an IDE should require to start up in this day and age
+
+  * Anyway, I am already running into slight trouble again, namely at the point where the Tutorial tells me "right-click on the **kotlin** folder and chose **New ▸ Kotlin Class/File**. Type **Main** and choose file."
+
+    * However, the option `New ▸ Kotlin Class/File` doesn't come up
+
+    * I also note that the "desktop" folder lacks the little square that is denoting what I believe Android Studio recognizes as modules
+
+    * I tried opening the `Project Structure > Modules`, but that only says "Nothing to Show"
+
+    * Meanwhile, if I go to "Load Modules", it does display "Desktop" as a loaded module, and with the little square that is notably still missing in the outliner
+
+    * I tried `Build > Make Project`, but that didn't change anything either
+
+    * Seriously, WTF =>,<=
+
+    * I also note that the file name of the `desktop/build.gradle.kts` is in red, but the IDE does not tell me what this is supposed to signify, and the project doesn't have any errors either
+
+    * However, when I tried building that file directly now I got _all sorts_ of errors:
+
+      * ````
+        build.gradle.kts:1:12: error: unresolved reference: jetbrains
+        import org.jetbrains.compose.compose
+                   ^
+        build.gradle.kts:2:12: error: unresolved reference: jetbrains
+        import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+                   ^
+        build.gradle.kts:4:1: error: unresolved reference: plugins
+        plugins {
+        ^
+        build.gradle.kts:5:5: error: expression 'kotlin' cannot be invoked as a function. The function 'invoke()' is not found
+            kotlin(multiplatform)
+            ^
+        build.gradle.kts:5:5: error: unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+        public val <T : Any> Class<TypeVariable(T)>.kotlin: KClass<TypeVariable(T)> defined in kotlin.jvm
+            kotlin(multiplatform)
+            ^
+        build.gradle.kts:5:12: error: unresolved reference: multiplatform
+            kotlin(multiplatform)
+                   ^
+        build.gradle.kts:6:5: error: unresolved reference: id
+            id(composePlugin) version Versions.desktop_compose_plugin
+            ^
+        build.gradle.kts:6:8: error: unresolved reference: composePlugin
+            id(composePlugin) version Versions.desktop_compose_plugin
+               ^
+        build.gradle.kts:6:31: error: unresolved reference: Versions
+            id(composePlugin) version Versions.desktop_compose_plugin
+                                      ^
+        build.gradle.kts:9:1: error: unresolved reference: group
+        group = "com.raywenderlich.findtime"
+        ^
+        build.gradle.kts:10:1: error: unresolved reference: version
+        version = "1.0.0"
+        ^
+        build.gradle.kts:12:1: error: expression 'kotlin' cannot be invoked as a function. The function 'invoke()' is not found
+        kotlin {
+        ^
+        build.gradle.kts:12:1: error: unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+        public val <T : Any> Class<TypeVariable(T)>.kotlin: KClass<TypeVariable(T)> defined in kotlin.jvm
+        kotlin {
+        ^
+        build.gradle.kts:13:5: error: unresolved reference: jvm
+            jvm {
+            ^
+        build.gradle.kts:14:9: error: unresolved reference: withJava
+                withJava()
+                ^
+        build.gradle.kts:15:9: error: unresolved reference: compilations
+                compilations.all {
+                ^
+        build.gradle.kts:16:13: error: unresolved reference: kotlinOptions
+                    kotlinOptions.jvmTarget = "11"
+                    ^
+        build.gradle.kts:16:27: error: variable expected
+                    kotlinOptions.jvmTarget = "11"
+                                  ^
+        build.gradle.kts:19:5: error: unresolved reference: sourceSets
+            sourceSets {
+            ^
+        build.gradle.kts:20:24: error: unresolved reference: getting
+                val jvmMain by getting {
+                               ^
+        build.gradle.kts:21:20: error: unresolved reference: srcDirs
+                    kotlin.srcDirs("src/jvmMain/kotlin")
+                           ^
+        build.gradle.kts:22:13: error: unresolved reference: dependencies
+                    dependencies {
+                    ^
+        build.gradle.kts:23:17: error: unresolved reference: implementation
+                        implementation(compose.desktop.currentOs)
+                        ^
+        build.gradle.kts:23:32: error: unresolved reference: compose
+                        implementation(compose.desktop.currentOs)
+                                       ^
+        build.gradle.kts:24:17: error: unresolved reference: api
+                        api(compose.runtime)
+                        ^
+        build.gradle.kts:24:21: error: unresolved reference: compose
+                        api(compose.runtime)
+                            ^
+        build.gradle.kts:25:17: error: unresolved reference: api
+                        api(compose.foundation)
+                        ^
+        build.gradle.kts:25:21: error: unresolved reference: compose
+                        api(compose.foundation)
+                            ^
+        build.gradle.kts:26:17: error: unresolved reference: api
+                        api(compose.material)
+                        ^
+        build.gradle.kts:26:21: error: unresolved reference: compose
+                        api(compose.material)
+                            ^
+        build.gradle.kts:27:17: error: unresolved reference: api
+                        api(compose.ui)
+                        ^
+        build.gradle.kts:27:21: error: unresolved reference: compose
+                        api(compose.ui)
+                            ^
+        build.gradle.kts:28:17: error: unresolved reference: api
+                        api(compose.materialIconsExtended)
+                        ^
+        build.gradle.kts:28:21: error: unresolved reference: compose
+                        api(compose.materialIconsExtended)
+                            ^
+        build.gradle.kts:30:17: error: unresolved reference: implementation
+                        implementation(Deps.napier)
+                        ^
+        build.gradle.kts:30:32: error: unresolved reference: Deps
+                        implementation(Deps.napier)
+                                       ^
+        build.gradle.kts:31:17: error: unresolved reference: implementation
+                        implementation(Deps.Coroutines.common)
+                        ^
+        build.gradle.kts:31:32: error: unresolved reference: Deps
+                        implementation(Deps.Coroutines.common)
+                                       ^
+        build.gradle.kts:33:17: error: unresolved reference: implementation
+                        implementation(project(":shared"))
+                        ^
+        build.gradle.kts:33:32: error: unresolved reference: project
+                        implementation(project(":shared"))
+                                       ^
+        build.gradle.kts:41:1: error: unresolved reference: compose
+        compose.desktop {
+        ^
+        build.gradle.kts:42:5: error: unresolved reference: application
+            application {
+            ^
+        build.gradle.kts:43:9: error: unresolved reference: mainClass
+                mainClass = "MainKt"
+                ^
+        build.gradle.kts:44:9: error: unresolved reference: nativeDistributions
+                nativeDistributions {
+                ^
+        build.gradle.kts:45:13: error: unresolved reference: targetFormats
+                    targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+                    ^
+        build.gradle.kts:45:27: error: unresolved reference: TargetFormat
+                    targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+                                  ^
+        build.gradle.kts:45:45: error: unresolved reference: TargetFormat
+                    targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+                                                    ^
+        build.gradle.kts:45:63: error: unresolved reference: TargetFormat
+                    targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+                                                                      ^
+        build.gradle.kts:46:13: error: unresolved reference: packageName
+                    packageName = "FindTime"
+                    ^
+        build.gradle.kts:47:13: error: unresolved reference: macOS
+                    macOS {
+                    ^
+        build.gradle.kts:48:17: error: unresolved reference: bundleID
+                        bundleID = "com.raywenderlich.findtime"
+                        ^
+        ````
+
+    * Okay, what in the name of Dragon is wrong with that file?
+
+    * Let me check the final file for that in the sample repository...
+
+    * I now copied over the code from the final file in the sample repository, but it still doesn't work...
+
+    * Maybe running these files directly is simply not intended
+
+  * Anyway, I feel I have little choice but to continue and hope it somehow works out
+
+  * So, we were stuck on the part where I couldn't add the file as a kotlin file because the IDE does not give me that option because "desktop" is not recognized as a module
+
+    * So I guess I'll just add it as a normal file and see when I run into trouble
+
+  * Okay, so I got until "Run the desktop app:"
+
+    * Not that I expected it to work, because the project still has many errors, but the error that actually happened now was another completely unexpected one:
+
+      * ````
+        Could not set process working directory to 'E:\projects\kotlin-multiplatform-test\desktop': could not set current directory (errno 2)
+        ````
+
+    * After trying a while to figure it out, I finally spotted the cause for this, and most likely also the previous error:
+
+      * The root level folder that was supposed to be named "desktop" had a typo in it, and was named "dektop" instead
+      * Fixing that also allowed it to be recognized as a module
+
 
 
 # Pros & Cons
@@ -252,7 +468,37 @@ Next:
 ## Cons
 
 * 10-minute waits on project sync-ups
+  * 2-minute wait on daily start-up
+
 * I'm having considerable trouble even just with the Tutorials, which makes me not at all optimisitic about building an actual production app with this
+* Setting up a project seems overly complicated
+  * Regularly getting project configuration issues, such as modules not being recognized as such, and it apparently is impossible to tell the IDE that a folder is a module
+
+
+
+
+# Knowledgebase
+
+## Bugfixes
+
+### Module is not recognized
+
+**Symptoms**
+
+* A folder that is supposed to be a module is not recognized as such
+
+**Cause**
+
+* Possibly a typo
+* For a folder to be recognized as a module, the `settings.gradle.kts` has to have an `include` statement for that folder
+* If either the module folder or the include statement  have a typo, then the module will not be recognized
+* Example:
+  * Folder: `desktop`
+  * Include statement: `include(":dektop")`⚡
+
+**Fix**
+
+* Make sure the module folder name and the module import statement are the same and have no typos
 
 
 

@@ -1,13 +1,13 @@
 package com.raywenderlich.findtime.android
 
-import com.raywenderlich.findtime.android.ui.MainView
+import com.raywenderlich.compose.ui.MainView
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.ui.res.stringResource
-import com.raywenderlich.findtime.android.ui.MainView
+import com.raywenderlich.compose.ui.MainView
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Napier.base(DebugAntilog())
         setContent {
-            MainView {
+            com.raywenderlich.compose.ui.MainView {
                 TopAppBar(title = {
                     // 4
                     when (it) {

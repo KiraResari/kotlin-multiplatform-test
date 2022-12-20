@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.raywenderlich.findtime.android.ui.NumberPicker
+import com.raywenderlich.compose.ui.NumberPicker
 
 @Composable
 fun NumberTimeCard(label: String, hour: MutableState<Int>) {

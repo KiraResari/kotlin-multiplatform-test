@@ -1,3 +1,5 @@
+package com.raywenderlich.compose.ui
+
 import androidx.compose.runtime.Composable
 
 typealias OnAddType =  (List<String>) -> Unit

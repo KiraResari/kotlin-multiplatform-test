@@ -25,8 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.raywenderlich.findtime.TimeZoneHelper
 import com.raywenderlich.findtime.TimeZoneHelperImpl
-import com.raywenderlich.findtime.android.ui.MeetingDialog
-import com.raywenderlich.findtime.android.ui.isSelected
+import com.raywenderlich.compose.ui.MeetingDialog
+import com.raywenderlich.compose.ui.isSelected
 
 @Composable
 fun FindMeetingScreen(

@@ -14,8 +14,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.raywenderlich.findtime.TimeZoneHelper
 import com.raywenderlich.findtime.TimeZoneHelperImpl
-import com.raywenderlich.findtime.android.ui.AnimatedSwipeDismiss
-import com.raywenderlich.findtime.android.ui.LocalTimeCard
+import com.raywenderlich.compose.ui.AnimatedSwipeDismiss
+import com.raywenderlich.compose.ui.LocalTimeCard
 import kotlinx.coroutines.delay
 
 const val delayMilliseconds = 1000 * 60L // 1 minute
