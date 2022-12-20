@@ -461,6 +461,47 @@
       * The root level folder that was supposed to be named "desktop" had a typo in it, and was named "dektop" instead
       * Fixing that also allowed it to be recognized as a module
 
+    * After that, the app unexpectedly started up as explained in the tutorial, despite the project still having a number of problems
+
+      * Or more specifically, it has one problem repeated a number of times:
+
+        * ````
+          Unresolved reference: onDismissType
+          ````
+
+      *  I figured out that this was because the `Types.kt` in my project was missing the package declaration `package com.raywenderlich.compose.ui`
+
+  * Now moving on with the tutorial
+
+  * Further problems ensued which were not addressed in the tutorial:
+
+    * ````
+      e: E:\projects\kotlin-multiplatform-test\shared-ui\src\commonMain\kotlin\com\raywenderlich\compose\ui\AddTimezoneDialog.kt: (26, 12): Expected function 'AddTimeDialogWrapper' has no actual declaration in module <shared-ui> for JVM
+      ````
+
+    * Great, now it complains:
+
+      * ````
+        Expected function 'AddTimeDialogWrapper' has no actual declaration in module <shared-ui> for JVM
+        Actual function 'AddTimeDialogWrapper' has no corresponding expected declaration
+        ````
+
+    * Could that be related to that earlier thing where it didn't allow me to add the file as a kotlin file?
+
+    * Yup, looks like it
+
+    * By now I'm starting to figure out what the difference is between `Add File` `Add Kotlin File/Class > File` and `Add Kotlin File/Class > Class`
+
+      * `Add File` simply adds an empty file
+      * `Add Kotlin File/Class > File` adds a package declaration at the top
+      * `Add Kotlin File/Class > Class` additionally also adds an empty class
+
+    * And because I had to add it using `Add File`, the declaration `package com.raywenderlich.compose.ui` was missing at the top
+
+    * I added it, and now it works
+
+  * Now the app generally works, even if some of the window sizes are still wrong
+
 
 
 # Pros & Cons

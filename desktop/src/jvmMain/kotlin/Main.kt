@@ -4,6 +4,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import com.raywenderlich.compose.ui.MainView
 
 fun main() {
     application {
@@ -15,8 +16,9 @@ fun main() {
             title = "TimeZone"
         ) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                // TODO: Add Theme
-                // TODO: Add MainView
+                AppTheme {
+                    MainView()
+                }
             }
         }
     }

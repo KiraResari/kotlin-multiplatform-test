@@ -25,11 +25,11 @@ import androidx.compose.ui.unit.dp
 @Composable
 expect fun MeetingDialogWrapper(onDismiss: onDismissType, content: @Composable () -> Unit)
 
+@Composable
 fun MeetingDialog(
     hours: List<Int>,
     onDismiss: onDismissType
 ) {
-
     MeetingDialogWrapper(onDismiss) {
 
         Column(

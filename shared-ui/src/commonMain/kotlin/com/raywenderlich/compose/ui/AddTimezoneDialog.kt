@@ -29,6 +29,7 @@ fun isSelected(selectedStates: Map<Int, Boolean>, index: Int): Boolean {
     return (selectedStates.containsKey(index) && (true == selectedStates[index]))
 }
 
+@Composable
 fun AddTimeZoneDialog(
     onAdd: OnAddType,
     onDismiss: onDismissType
