@@ -627,7 +627,36 @@
 
 
 
+# 22-Dec-2022
+
+* Now continuing with this
+* Last time I succeeded (with some pain) to build a desktop frontend, and to make it so that most of the same frontend components function both on desktop as well as on Android
+* I was going to continue with this next chapter, but unfortunately, it looks like the rest of this tutorial-chain is behind a paywall
+  * https://www.kodeco.com/books/kotlin-multiplatform-by-tutorials/v1.0/chapters/6-connect-to-platform-specific-api
+  * That is unfortunate, because it would have covered some interesting points, such as testing, dependency injection and data concurrency
+  * The cost would be 37.99€, which is roughly 32.99€ than I would be willing to pay for a tutorial that left me stressed-out and frustrated as many times as this one, so no thanks
+  * Oh well, never mind then, I'll try other ways of figuring those out
+* I could now try to already start with my Kotlin Multiplatform project, but I had my mind set on learning more basics in advance today, and I do have the keywords, so here's what I still want to learn in a test project before starting on a real project:
+  * Testing
+  * Dependency Injection
+  * Data Persistence
+* So, first: Testing
+  * Maybe this will be a good tutorial for that?
+    * https://touchlab.co/understanding-and-configuring-your-kmm-test-suite/
+  * Actually, I am running into problems there again, and since the project is a whole mess by now, I think I'd rather start my own project now where I know what I'm doing and why, and will figure out the issues one by one as I come across them
+* With that, I am at the end of this test project
+* All in all, I'd say that I am not really convinced of Kotlin Multiplatform, but that might also be due to the nature of the tutorials, so maybe if I strike out on my own with what I learned so far, I'll fare better
+  * Though naturally, I am mentally already preparing for pain and trouble
+* But let's see how I fare with an actual project
+
+
+
 # Pros & Cons
+
+## Pros
+
+* You can use Kotlin Compose to create frontends that will work on both Android and Desktop, including iOS Desktop
+  * For iOS Mobile, you need frontend code written in Swift though (as far as I can tell)
 
 ## Cons
 
